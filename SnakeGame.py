@@ -20,8 +20,8 @@ wn.tracer(0) # stops screen updates
 # Snake head
 head = turtle.Turtle()
 head.speed(0)
-head.shape('circle')
-head.color("green")
+head.shape('square')
+head.color("yellow")
 head.penup()
 head.goto(0,0)
 head.direction = "stop"
@@ -29,7 +29,7 @@ head.direction = "stop"
 # Snake Food
 food = turtle.Turtle()
 food.speed(0)
-food.shape('square')
+food.shape('circle')
 food.color("red")
 food.penup()
 food.goto(0,100)
@@ -104,6 +104,9 @@ while(True):
         # Reset the score
         score = 0
 
+        # Reset the delay
+        delay = 0.1
+
         pen.clear()
         pen.write("Score: {} High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
@@ -122,6 +125,9 @@ while(True):
         new_segment.color("green")
         new_segment.penup()
         segments.append(new_segment)
+
+        # Shorten the delay
+        delay -= 0.001
 
         # Increase the score
         score += 10
@@ -160,6 +166,15 @@ while(True):
 
             # Clear the segments list
             segments = [] 
+
+            # Reset the score
+            score = 0
+
+            # Reset the delay
+            delay = 0.1
+
+            pen.clear()
+            pen.write("Score: {} High Score: {}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
 
     time.sleep(delay)
 
